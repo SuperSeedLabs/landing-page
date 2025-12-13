@@ -517,6 +517,9 @@
             seed.classList.add('dragging');
             seedWrapper.classList.add('dragging');
             
+            // Bug fix 1: Clear any active transition from previous drag
+            seed.style.transition = '';
+            
             const point = e.touches ? e.touches[0] : e;
             startX = point.clientX - currentX;
             startY = point.clientY - currentY;
@@ -561,6 +564,8 @@
             setTimeout(() => {
                 seed.classList.remove('clicked');
                 seed.style.transition = '';
+                // Bug fix 2: Clear inline transform to allow float animation to resume
+                seed.style.transform = '';
             }, 600);
         }
         
