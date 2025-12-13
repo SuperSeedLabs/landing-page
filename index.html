@@ -278,7 +278,7 @@
                 
                 <!-- Clever hint message -->
                 <div class="seed-hint absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 transition-opacity duration-500">
-                    <span class="font-mono text-xs text-champagne/80 tracking-wider">technology not built. grown.</span>
+                    <span class="font-mono text-xs text-champagne/80 tracking-wider">machines not built. grown.</span>
                 </div>
             </div>
             
@@ -289,8 +289,8 @@
             </h1>
             
             <!-- Subheadline -->
-            <p class="font-sans font-light text-lg sm:text-xl md:text-2xl text-grey-cool text-center max-w-2xl leading-relaxed mb-12">
-                We are engineering the next stage of autonomous evolution.<br class="hidden sm:block">
+            <p class="font-sans font-light text-lg sm:text-xl md:text-2xl text-grey-cool text-center max-w-3xl leading-relaxed mb-12">
+                We are engineering the next stage of autonomous&nbsp;evolution.<br class="hidden sm:block">
                 <span class="text-white/80">From seed to superintelligence.</span>
             </p>
             
@@ -510,6 +510,7 @@
         const seedWrapper = seed.parentElement;
         let isDragging = false;
         let startX, startY, currentX = 0, currentY = 0;
+        let animationTimeout = null; // Track pending timeout
         const maxDrag = 250; // Maximum drag distance
         
         function startDrag(e) {
@@ -517,7 +518,13 @@
             seed.classList.add('dragging');
             seedWrapper.classList.add('dragging');
             
-            // Bug fix 1: Clear any active transition from previous drag
+            // Bug fix: Clear any pending timeout from previous drag
+            if (animationTimeout) {
+                clearTimeout(animationTimeout);
+                animationTimeout = null;
+            }
+            
+            // Clear any active transition from previous drag
             seed.style.transition = '';
             
             const point = e.touches ? e.touches[0] : e;
@@ -561,11 +568,14 @@
             
             // Trigger pulse on release
             seed.classList.add('clicked');
-            setTimeout(() => {
+            
+            // Store timeout ID so it can be cancelled if needed
+            animationTimeout = setTimeout(() => {
                 seed.classList.remove('clicked');
                 seed.style.transition = '';
-                // Bug fix 2: Clear inline transform to allow float animation to resume
+                // Clear inline transform to allow float animation to resume
                 seed.style.transform = '';
+                animationTimeout = null;
             }, 600);
         }
         
