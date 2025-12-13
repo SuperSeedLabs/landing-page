@@ -100,14 +100,29 @@
             100% { height: 80px; opacity: 1; }
         }
         
+        .seed-wrapper {
+            position: relative;
+        }
+        
+        .seed-wrapper:hover .seed-hint,
+        .seed-wrapper.dragging .seed-hint {
+            opacity: 1;
+        }
+        
         .seed-container {
             animation: float 6s ease-in-out infinite;
-            cursor: pointer;
-            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: grab;
+            transition: filter 0.3s ease;
+            touch-action: none;
+            user-select: none;
+        }
+        
+        .seed-container.dragging {
+            cursor: grabbing;
+            animation-play-state: paused;
         }
         
         .seed-container:hover {
-            transform: scale(1.05);
             filter: brightness(1.1);
         }
         
@@ -116,19 +131,15 @@
             transform: scale(1.8);
         }
         
-        .seed-container:active {
-            transform: scale(0.95);
-        }
-        
         .seed-container.clicked {
             animation: float 6s ease-in-out infinite, pulse-click 0.6s ease;
         }
         
         @keyframes pulse-click {
-            0% { transform: scale(1); }
-            30% { transform: scale(1.15); }
-            60% { transform: scale(0.95); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1) translate(var(--tx, 0), var(--ty, 0)); }
+            30% { transform: scale(1.15) translate(var(--tx, 0), var(--ty, 0)); }
+            60% { transform: scale(0.95) translate(var(--tx, 0), var(--ty, 0)); }
+            100% { transform: scale(1) translate(var(--tx, 0), var(--ty, 0)); }
         }
         
         .seed-glow {
@@ -238,29 +249,36 @@
         <section id="mission" class="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
             
             <!-- 3D Seed Asset Placeholder -->
-            <div class="seed-container relative mb-12" onclick="seedClick(this)">
-                <!-- Outer glow ring -->
-                <div class="seed-glow absolute inset-0 rounded-full bg-gradient-to-br from-cyan/20 to-champagne/20 blur-3xl scale-150 opacity-70"></div>
-                
-                <!-- Seed visualization -->
-                <div class="relative w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center">
-                    <!-- Carbon fiber base -->
-                    <div class="absolute inset-8 rounded-full bg-gradient-to-br from-matte to-obsidian border border-white/10"></div>
+            <div class="seed-wrapper relative mb-12">
+                <div class="seed-container relative" id="seed">
+                    <!-- Outer glow ring -->
+                    <div class="seed-glow absolute inset-0 rounded-full bg-gradient-to-br from-cyan/20 to-champagne/20 blur-3xl scale-150 opacity-70"></div>
                     
-                    <!-- Gold accent ring -->
-                    <div class="absolute inset-6 rounded-full border-2 border-champagne/30"></div>
-                    
-                    <!-- Inner seed core -->
-                    <div class="absolute inset-12 rounded-full bg-gradient-to-br from-champagne/40 to-champagne/10 backdrop-blur"></div>
-                    
-                    <!-- Fiber optic filament -->
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full">
-                        <div class="w-0.5 h-20 bg-gradient-to-t from-cyan via-cyan/50 to-transparent"></div>
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan animate-pulse-slow"></div>
+                    <!-- Seed visualization -->
+                    <div class="relative w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center">
+                        <!-- Carbon fiber base -->
+                        <div class="absolute inset-8 rounded-full bg-gradient-to-br from-matte to-obsidian border border-white/10"></div>
+                        
+                        <!-- Gold accent ring -->
+                        <div class="absolute inset-6 rounded-full border-2 border-champagne/30"></div>
+                        
+                        <!-- Inner seed core -->
+                        <div class="absolute inset-12 rounded-full bg-gradient-to-br from-champagne/40 to-champagne/10 backdrop-blur"></div>
+                        
+                        <!-- Fiber optic filament -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full">
+                            <div class="w-0.5 h-20 bg-gradient-to-t from-cyan via-cyan/50 to-transparent"></div>
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan animate-pulse-slow"></div>
+                        </div>
+                        
+                        <!-- Logo overlay -->
+                        <img src="assets/images/superseed.png" alt="SuperSeed" class="relative z-10 w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover opacity-90 pointer-events-none">
                     </div>
-                    
-                    <!-- Logo overlay -->
-                    <img src="assets/images/superseed.png" alt="SuperSeed" class="relative z-10 w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover opacity-90">
+                </div>
+                
+                <!-- Clever hint message -->
+                <div class="seed-hint absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 transition-opacity duration-500">
+                    <span class="font-mono text-xs text-champagne/80 tracking-wider">technology not built. grown.</span>
                 </div>
             </div>
             
@@ -487,17 +505,84 @@
         window.addEventListener('scroll', reveal);
         reveal(); // Initial check
         
-        // Seed click interaction
-        function seedClick(element) {
-            element.classList.remove('clicked');
-            void element.offsetWidth; // Trigger reflow
-            element.classList.add('clicked');
+        // Seed drag and interaction
+        const seed = document.getElementById('seed');
+        const seedWrapper = seed.parentElement;
+        let isDragging = false;
+        let startX, startY, currentX = 0, currentY = 0;
+        const maxDrag = 250; // Maximum drag distance
+        
+        function startDrag(e) {
+            isDragging = true;
+            seed.classList.add('dragging');
+            seedWrapper.classList.add('dragging');
             
-            // Remove class after animation completes
+            const point = e.touches ? e.touches[0] : e;
+            startX = point.clientX - currentX;
+            startY = point.clientY - currentY;
+        }
+        
+        function drag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            const point = e.touches ? e.touches[0] : e;
+            let newX = point.clientX - startX;
+            let newY = point.clientY - startY;
+            
+            // Constrain to max drag distance with elastic feel
+            const distance = Math.sqrt(newX * newX + newY * newY);
+            if (distance > maxDrag) {
+                const scale = maxDrag / distance;
+                newX *= scale;
+                newY *= scale;
+            }
+            
+            currentX = newX;
+            currentY = newY;
+            
+            seed.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        }
+        
+        function endDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            seed.classList.remove('dragging');
+            seedWrapper.classList.remove('dragging');
+            
+            // Animate back to center with spring effect
+            seed.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            seed.style.transform = 'translate(0, 0)';
+            currentX = 0;
+            currentY = 0;
+            
+            // Trigger pulse on release
+            seed.classList.add('clicked');
             setTimeout(() => {
-                element.classList.remove('clicked');
+                seed.classList.remove('clicked');
+                seed.style.transition = '';
             }, 600);
         }
+        
+        // Mouse events
+        seed.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', drag);
+        window.addEventListener('mouseup', endDrag);
+        
+        // Touch events
+        seed.addEventListener('touchstart', startDrag, { passive: false });
+        window.addEventListener('touchmove', drag, { passive: false });
+        window.addEventListener('touchend', endDrag);
+        
+        // Click (for quick taps)
+        seed.addEventListener('click', () => {
+            if (!isDragging) {
+                seed.classList.remove('clicked');
+                void seed.offsetWidth;
+                seed.classList.add('clicked');
+                setTimeout(() => seed.classList.remove('clicked'), 600);
+            }
+        });
         
         // Form submission handler
         function handleSubmit(e) {
