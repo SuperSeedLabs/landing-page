@@ -63,7 +63,7 @@ landing-page/
 ├── index.html              # Main landing page
 ├── assets/
 │   └── images/
-│       └── superseed.png   # Logo/brand asset
+│       └── superseed.jpeg   # Logo/brand asset
 └── README.md
 ```
 
