@@ -3,83 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuperSeed Labs | Intelligence. Superseded.</title>
-    <meta name="description" content="We are engineering the next stage of autonomous evolution. From seed to superintelligence.">
+    <title>SUPERSEED LABS | Intelligence. Superseded.</title>
+    <meta name="description" content="Engineering Recursive General Intelligence. From imitation to innovation. The Autopoietic Intelligence Engine.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SUPERSEED LABS | Intelligence. Superseded.">
+    <meta property="og:description" content="The next trillion-dollar unlock: systems that generate their own supervision, architect their own successors, and embody physics.">
+    <meta property="og:image" content="assets/images/superseed.png">
+    <meta property="og:type" content="website">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/superseed.jpeg">
     <link rel="shortcut icon" type="image/png" href="assets/images/superseed.jpeg">
     <link rel="apple-touch-icon" href="assets/images/superseed.jpeg">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        obsidian: '#0a0a0a',
-                        matte: '#1a1a1a',
-                        champagne: '#d4af37',
-                        'champagne-light': '#e8c45e',
-                        cyan: '#00f5d4',
-                        'cyan-glow': '#00ffdd',
-                        grey: {
-                            cool: '#a0a0a0',
-                            warm: '#6b6b6b'
-                        }
-                    },
-                    fontFamily: {
-                        mono: ['JetBrains Mono', 'monospace'],
-                        sans: ['Space Grotesk', 'sans-serif']
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Dark theme (default) */
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --text-tertiary: #6b6b6b;
-            --border-color: rgba(255, 255, 255, 0.05);
-            --border-hover: rgba(0, 245, 212, 0.2);
-            --card-bg: rgba(26, 26, 26, 0.5);
-            --particle-color: rgba(160, 160, 160, 0.4);
-            --seed-base-from: #1a1a1a;
-            --seed-base-to: #0a0a0a;
-            --seed-border: rgba(255, 255, 255, 0.1);
-        }
-        
-        [data-theme="light"] {
-            /* Light theme */
-            --bg-primary: #f5f5f5;
-            --bg-secondary: #ffffff;
-            --text-primary: #0a0a0a;
-            --text-secondary: #4a4a4a;
-            --text-tertiary: #6b6b6b;
-            --border-color: rgba(0, 0, 0, 0.1);
-            --border-hover: rgba(0, 245, 212, 0.3);
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --particle-color: rgba(74, 74, 74, 0.15);
-            --seed-base-from: #ffffff;
-            --seed-base-to: #f5f5f5;
-            --seed-border: rgba(0, 0, 0, 0.15);
+            --void: #050505;
+            --obsidian: #0a0a0a;
+            --carbon: #111111;
+            --graphite: #1a1a1a;
+            --steel: #2a2a2a;
+            --ash: #888888;
+            --smoke: #aaaaaa;
+            --bone: #e5e5e5;
+            --ivory: #f5f5f5;
+            --white: #ffffff;
+            
+            --electric: #00e5cc;
+            --electric-dim: rgba(0, 229, 204, 0.15);
+            --plasma: #00ffdd;
+            --gold: #c9a227;
+            --gold-light: #e8c45e;
+            --gold-dim: rgba(201, 162, 39, 0.2);
+            --crimson: #ff3366;
+            
+            --font-display: 'Syne', sans-serif;
+            --font-angular: 'Space Grotesk', sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
         }
         
         * {
@@ -88,146 +54,1026 @@
             box-sizing: border-box;
         }
         
+        ::selection {
+            background: var(--electric);
+            color: var(--void);
+        }
+        
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
         
         body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: 'Space Grotesk', sans-serif;
+            background: var(--void);
+            color: var(--ivory);
+            font-family: var(--font-display);
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
         }
         
-        /* Particle Canvas */
-        #particles-canvas {
+        /* Noise texture overlay */
+        body::before {
+            content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        /* Grid background */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
             pointer-events: none;
             z-index: 0;
         }
         
-        /* Floating animation for seed */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
+        /* Gradient orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
         }
         
-        /* Glow animation */
-        @keyframes glow {
-            from { 
-                box-shadow: 0 0 20px rgba(0, 245, 212, 0.3), 0 0 40px rgba(0, 245, 212, 0.1);
-            }
-            to { 
-                box-shadow: 0 0 30px rgba(0, 245, 212, 0.5), 0 0 60px rgba(0, 245, 212, 0.2);
-            }
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--electric-dim) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float-orb 20s ease-in-out infinite;
         }
         
-        /* Seed filament animation */
-        @keyframes sprout {
-            0% { height: 0; opacity: 0; }
-            100% { height: 80px; opacity: 1; }
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            animation: float-orb 25s ease-in-out infinite reverse;
         }
         
-        .seed-wrapper {
-            position: relative;
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,51,102,0.1) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse-orb 15s ease-in-out infinite;
         }
         
-        .seed-wrapper:hover .seed-hint,
-        .seed-wrapper.dragging .seed-hint {
-            opacity: 1;
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
         }
         
-        .seed-container {
-            animation: float 6s ease-in-out infinite;
-            cursor: grab;
-            transition: filter 0.3s ease;
-            touch-action: none;
-            user-select: none;
+        @keyframes pulse-orb {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
         }
         
-        .seed-container.dragging {
-            cursor: grabbing;
-            animation-play-state: paused;
-        }
-        
-        .seed-container:hover {
-            filter: brightness(1.1);
-        }
-        
-        .seed-container:hover .seed-glow {
-            opacity: 1;
-            transform: scale(1.8);
-        }
-        
-        .seed-container.clicked {
-            animation: float 6s ease-in-out infinite, pulse-click 0.6s ease;
-        }
-        
-        @keyframes pulse-click {
-            0% { transform: scale(1) translate(var(--tx, 0), var(--ty, 0)); }
-            30% { transform: scale(1.15) translate(var(--tx, 0), var(--ty, 0)); }
-            60% { transform: scale(0.95) translate(var(--tx, 0), var(--ty, 0)); }
-            100% { transform: scale(1) translate(var(--tx, 0), var(--ty, 0)); }
-        }
-        
-        .seed-glow {
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        
-        /* Button glow effect */
-        .btn-glow {
-            position: relative;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--void) 0%, transparent 100%);
             transition: all 0.3s ease;
         }
         
-        .btn-glow::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(135deg, #00f5d4, #d4af37);
-            border-radius: inherit;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-            filter: blur(10px);
+        nav.scrolled {
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
-        .btn-glow:hover::before {
-            opacity: 0.7;
+        .logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
         
-        .btn-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(0, 245, 212, 0.4);
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            object-fit: cover;
         }
         
-        /* Icon containers */
-        .icon-bio {
+        .logo span {
+            color: var(--gold);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--smoke);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--electric);
+        }
+        
+        .nav-status {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: var(--ash);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--electric);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 229, 204, 0.5); }
+            50% { opacity: 0.5; box-shadow: 0 0 0 8px rgba(0, 229, 204, 0); }
+        }
+        
+        /* Sections */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
             position: relative;
         }
         
-        .icon-bio::after {
+        .hero-seed {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin-bottom: 3rem;
+            animation: float-seed 8s ease-in-out infinite;
+        }
+        
+        @keyframes float-seed {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        .hero-seed img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-seed::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(135deg, var(--electric), var(--gold), var(--crimson));
+            border-radius: 28px;
+            z-index: 1;
+            animation: rotate-border 10s linear infinite;
+        }
+        
+        .hero-seed::after {
+            content: '';
+            position: absolute;
+            inset: -40px;
+            background: radial-gradient(circle, var(--electric-dim) 0%, transparent 70%);
+            z-index: 0;
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+        
+        @keyframes rotate-border {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .hero-overline {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--electric);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fade-in-up 0.8s ease forwards 0.2s;
+        }
+        
+        .hero-title {
+            font-family: var(--font-angular);
+            font-weight: 500;
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fade-in-up 0.8s ease forwards 0.4s;
+        }
+        
+        .hero-title .line-2 {
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-display);
+            font-weight: 400;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--smoke);
+            max-width: 700px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fade-in-up 0.8s ease forwards 0.6s;
+        }
+        
+        .hero-subtitle em {
+            font-style: normal;
+            color: var(--electric);
+            font-weight: 500;
+        }
+        
+        .hero-subtitle strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            animation: fade-in-up 0.8s ease forwards 0.8s;
+        }
+        
+        .btn {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--electric);
+            color: var(--void);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
             content: '';
             position: absolute;
             inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        
+        .btn-primary:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(0, 229, 204, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--ivory);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            animation: fade-in 1s ease forwards 1.2s;
+        }
+        
+        .scroll-indicator span {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--ash);
+            text-transform: uppercase;
+        }
+        
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--ash), transparent);
+            animation: scroll-bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes scroll-bounce {
+            0%, 100% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(0.5); opacity: 0.5; }
+        }
+        
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Thesis Section */
+        .thesis {
+            padding: 10rem 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,229,204,0.03) 50%, transparent 100%);
+        }
+        
+        .thesis-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .thesis-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--crimson);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .thesis-label::before,
+        .thesis-label::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--crimson);
+        }
+        
+        .thesis-text {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            line-height: 1.5;
+            color: var(--bone);
+        }
+        
+        .thesis-text .highlight {
+            color: var(--white);
+            position: relative;
+        }
+        
+        .thesis-text .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--electric), var(--gold));
+        }
+        
+        .thesis-tagline {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--electric);
+            margin-top: 3rem;
+        }
+        
+        .thesis-endgame {
+            font-family: var(--font-angular);
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: var(--ash);
+            margin-top: 2rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .thesis-endgame em {
+            color: var(--gold);
+            font-style: normal;
+            font-weight: 500;
+        }
+        
+        /* Mission Section */
+        .mission {
+            padding: 8rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .mission-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--electric);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-angular);
+            font-weight: 600;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: -0.02em;
+            color: var(--white);
+        }
+        
+        .mission-statement {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .mission-statement p {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--smoke);
+            line-height: 1.8;
+        }
+        
+        .mission-statement strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .mission-highlight {
+            font-style: normal;
+            color: var(--electric);
+        }
+        
+        /* Master Plan Section */
+        .masterplan {
+            padding: 10rem 2rem;
+            background: linear-gradient(180deg, var(--void) 0%, var(--obsidian) 50%, var(--void) 100%);
+        }
+        
+        .masterplan-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+        
+        .masterplan-subtitle {
+            font-family: var(--font-display);
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: var(--smoke);
+            margin-top: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .phases {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .phase {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .phase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--electric), var(--gold));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .phase:hover {
+            border-color: rgba(0, 229, 204, 0.2);
+            transform: translateY(-4px);
+        }
+        
+        .phase:hover::before {
+            opacity: 1;
+        }
+        
+        .phase-number {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 5rem;
+            line-height: 1;
+            background: linear-gradient(180deg, var(--steel) 0%, var(--graphite) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .phase-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .phase-name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+        
+        .phase-codename {
+            font-family: var(--font-angular);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--electric);
+        }
+        
+        .phase-content h4 {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        
+        .phase-content h4:first-child {
+            margin-top: 0;
+        }
+        
+        .phase-content p {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--smoke);
+            line-height: 1.7;
+        }
+        
+        .phase-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .phase-content li {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--smoke);
+            line-height: 1.7;
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+        
+        .phase-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--electric);
+        }
+        
+        .phase-output {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(0, 229, 204, 0.05);
+            border-left: 2px solid var(--electric);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .phase-output p {
+            font-size: 0.9rem;
+            color: var(--bone);
+        }
+        
+        /* Research Section */
+        .research {
+            padding: 10rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .research-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .research-card {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .research-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--electric), var(--gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .research-card:hover::before {
+            opacity: 1;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-4px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+        }
+        
+        .research-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--electric-dim) 0%, transparent 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .research-card:nth-child(2) .research-icon {
+            background: linear-gradient(135deg, var(--gold-dim) 0%, transparent 100%);
+        }
+        
+        .research-card:nth-child(3) .research-icon {
+            background: linear-gradient(135deg, rgba(255,51,102,0.15) 0%, transparent 100%);
+        }
+        
+        .research-card:nth-child(4) .research-icon {
+            background: linear-gradient(135deg, rgba(147,51,234,0.15) 0%, transparent 100%);
+        }
+        
+        .research-card h3 {
+            font-family: var(--font-angular);
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .research-card p {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--smoke);
+            line-height: 1.7;
+        }
+        
+        /* Why Us Section */
+        .why-us {
+            padding: 10rem 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(201,162,39,0.03) 50%, transparent 100%);
+        }
+        
+        .why-us-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .why-card {
+            padding: 3rem 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+        }
+        
+        .why-card:hover {
+            border-color: var(--gold-dim);
+            transform: translateY(-4px);
+        }
+        
+        .why-number {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 3rem;
+            background: linear-gradient(180deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+        
+        .why-card h3 {
+            font-family: var(--font-angular);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .why-card p {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--smoke);
+            line-height: 1.7;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 10rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--electric-dim) 0%, transparent 60%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-title {
+            font-family: var(--font-angular);
+            font-weight: 600;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: -0.02em;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-subtitle {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--smoke);
+            margin-bottom: 3rem;
+        }
+        
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: var(--graphite);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--white);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-form input::placeholder {
+            color: var(--ash);
+        }
+        
+        .cta-form input:focus {
+            border-color: var(--electric);
+            box-shadow: 0 0 0 3px var(--electric-dim);
+        }
+        
+        .cta-footnote {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--ash);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-footnote .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--crimson);
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 245, 212, 0.1) 0%, transparent 70%);
+            animation: pulse-dot 2s ease-in-out infinite;
         }
         
-        /* Input focus effect */
-        .input-protocol:focus {
-            box-shadow: 0 0 0 2px rgba(0, 245, 212, 0.3), 0 0 20px rgba(0, 245, 212, 0.1);
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
         
-        /* Scroll reveal */
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .footer-brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            opacity: 0.7;
+        }
+        
+        .footer-brand span {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--ash);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--ash);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--electric);
+        }
+        
+        .footer-locations {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--ash);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .footer-locations span:not(:last-child)::after {
+            content: '•';
+            margin-left: 1rem;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+        
+        /* Reveal animations */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
@@ -236,535 +1082,451 @@
             transform: translateY(0);
         }
         
-        /* Bio-circuit icon styles */
-        .bio-circuit {
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: draw 4s ease-in-out infinite;
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .phase {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
-        @keyframes draw {
-            0%, 100% { stroke-dashoffset: 100; }
-            50% { stroke-dashoffset: 0; }
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+            
+            .hero-seed {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .thesis, .mission, .masterplan, .research, .why-us, .cta {
+                padding: 5rem 1.5rem;
+            }
+            
+            .cta-form {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
         
-        /* Theme toggle button */
-        .theme-toggle {
-            position: relative;
-            width: 56px;
-            height: 28px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
             cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--ivory);
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            padding: 0 4px;
         }
         
-        .theme-toggle:hover {
-            border-color: #00f5d4;
-        }
-        
-        .theme-toggle-slider {
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, #00f5d4, #d4af37);
-            border-radius: 50%;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-        }
-        
-        [data-theme="light"] .theme-toggle-slider {
-            transform: translateX(28px);
-        }
-        
-        /* Update nav background for theme */
-        nav {
-            background: var(--bg-primary) !important;
-            opacity: 0.95;
-            border-bottom: 1px solid var(--border-color) !important;
-        }
-        
-        /* Update card styles for theme */
-        .protocol-card {
-            background: var(--card-bg) !important;
-            border: 1px solid var(--border-color) !important;
-        }
-        
-        .protocol-card:hover {
-            border-color: var(--border-hover) !important;
-        }
-        
-        /* Update seed visualization for theme */
-        .seed-base {
-            background: linear-gradient(to bottom right, var(--seed-base-from), var(--seed-base-to)) !important;
-            border-color: var(--seed-border) !important;
-        }
-        
-        /* Update input for theme */
-        .input-protocol {
-            background: var(--bg-secondary) !important;
-            border-color: var(--border-color) !important;
-            color: var(--text-primary) !important;
-        }
-        
-        .input-protocol::placeholder {
-            color: var(--text-tertiary);
-        }
-        
-        /* Update footer for theme */
-        footer {
-            border-top: 1px solid var(--border-color) !important;
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <!-- Particle Background Canvas -->
-    <canvas id="particles-canvas"></canvas>
+<body>
+    <!-- Background elements -->
+    <div class="grid-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
     
-    <!-- Main Content -->
-    <div class="relative z-10">
-        
-        <!-- Navigation -->
-        <nav class="fixed top-0 left-0 right-0 z-50 bg-obsidian/80 backdrop-blur-md border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                <!-- Logo -->
-                <a href="#mission" class="flex items-center hover:opacity-80 transition-opacity duration-300">
-                    <span class="font-sans font-semibold text-lg tracking-tight">SUPERSEED<span class="text-champagne"> LABS</span></span>
-                </a>
-                
-                <!-- Navigation Links -->
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#mission" class="font-mono text-sm text-grey-cool hover:text-white transition-colors duration-300">Mission</a>
-                    <a href="#protocol" class="font-mono text-sm text-grey-cool hover:text-white transition-colors duration-300">Protocol</a>
-                    <a href="#access" class="font-mono text-sm text-cyan hover:text-cyan-glow transition-colors duration-300">Request Access</a>
-                </div>
-                
-                <!-- Right side controls -->
-                <div class="flex items-center gap-4">
-                    <!-- Theme Toggle -->
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                        <div class="theme-toggle-slider">🌙</div>
-                    </button>
-                    
-                    <!-- Status Badge -->
-                    <div class="font-mono text-xs text-grey-cool tracking-wider">
-                        <span class="hidden sm:inline">STATUS:</span> <span class="text-cyan">ACTIVE</span>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        
-        <!-- Hero Section -->
-        <section id="mission" class="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
-            
-            <!-- 3D Seed Asset Placeholder -->
-            <div class="seed-wrapper relative mb-12">
-                <div class="seed-container relative" id="seed">
-                    <!-- Outer glow ring -->
-                    <div class="seed-glow absolute inset-0 rounded-full bg-gradient-to-br from-cyan/20 to-champagne/20 blur-3xl scale-150 opacity-70"></div>
-                    
-                    <!-- Seed visualization -->
-                    <div class="relative w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center">
-                        <!-- Carbon fiber base -->
-                        <div class="seed-base absolute inset-8 rounded-full"></div>
-                        
-                        <!-- Gold accent ring -->
-                        <div class="absolute inset-6 rounded-full border-2 border-champagne/30"></div>
-                        
-                        <!-- Inner seed core -->
-                        <div class="absolute inset-12 rounded-full bg-gradient-to-br from-champagne/40 to-champagne/10 backdrop-blur"></div>
-                        
-                        <!-- Fiber optic filament -->
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full">
-                            <div class="w-0.5 h-20 bg-gradient-to-t from-cyan via-cyan/50 to-transparent"></div>
-                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan animate-pulse-slow"></div>
-                        </div>
-                        
-                        <!-- Logo overlay -->
-                        <img src="assets/images/superseed.jpeg" alt="SuperSeed" class="relative z-10 w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover opacity-90 pointer-events-none">
-                    </div>
-                </div>
-                
-                <!-- Clever hint message -->
-                <div class="seed-hint absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 transition-opacity duration-500">
-                    <span class="font-mono text-xs text-champagne/80 tracking-wider">machines not built. optimized.</span>
-                </div>
-            </div>
-            
-            <!-- Headline -->
-            <h1 class="font-sans font-light text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-center tracking-[-0.02em] mb-6">
-                <span class="block">Intelligence.</span>
-                <span class="block bg-gradient-to-r from-champagne via-champagne-light to-champagne bg-clip-text text-transparent">Superseded.</span>
-            </h1>
-            
-            <!-- Subheadline -->
-            <p class="font-sans font-light text-lg sm:text-xl md:text-2xl text-grey-cool text-center max-w-3xl leading-relaxed mb-12">
-                We are engineering the next stage of autonomous&nbsp;evolution.<br class="hidden sm:block">
-                <span class="text-white/80">From seed to superintelligence.</span>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="#" class="logo">
+            <img src="assets/images/superseed.jpeg" alt="SuperSeed" class="logo-icon">
+            SUPERSEED<span>LABS</span>
+        </a>
+        <div class="nav-links">
+            <a href="#thesis">Thesis</a>
+            <a href="#masterplan">Master Plan</a>
+            <a href="#research">Research</a>
+            <a href="#access">Request Access</a>
+        </div>
+        <div class="nav-status">
+            <div class="status-dot"></div>
+            <span>SYSTEMS ACTIVE</span>
+        </div>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-seed">
+            <img src="assets/images/superseed.png" alt="SuperSeed">
+        </div>
+        <div class="hero-overline">Recursive General Intelligence</div>
+        <h1 class="hero-title">
+            <span class="line-1">Intelligence.</span><br>
+            <span class="line-2">Superseded.</span>
+        </h1>
+        <p class="hero-subtitle">
+            We are building the <strong>Autopoietic Intelligence Engine</strong>—systems that 
+            generate their own supervision, architect their own successors, and embody physics 
+            as natively as they process text. <em>The systematic path to superintelligence.</em>
+        </p>
+        <div class="hero-cta">
+            <a href="#access" class="btn btn-primary">Build With Us</a>
+            <a href="#masterplan" class="btn btn-secondary">Read the Master Plan</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Explore</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+    
+    <!-- Thesis Section -->
+    <section class="thesis" id="thesis">
+        <div class="thesis-content reveal">
+            <div class="thesis-label">The Thesis</div>
+            <p class="thesis-text">
+                The "Scaling Laws" era of merely adding parameters to static transformers 
+                is hitting <span class="highlight">diminishing returns</span>. The next trillion-dollar 
+                unlock is not in training larger models on the same human internet—but in building 
+                systems that move from <strong>imitation</strong> to <strong>innovation</strong>.
             </p>
-            
-            <!-- Scroll indicator -->
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-                <span class="font-mono text-xs text-grey-cool tracking-widest">EXPLORE</span>
-                <div class="w-px h-8 bg-gradient-to-b from-grey-cool to-transparent"></div>
+            <p class="thesis-tagline">From learning from humans → to learning from physics and self-play.</p>
+            <p class="thesis-endgame">Superintelligence is no longer a question of <em>if</em>—only <em>who builds it</em> and <em>how</em>.</p>
+        </div>
+    </section>
+    
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="container">
+            <div class="mission-header reveal">
+                <div class="section-label">The Mission</div>
+                <h2 class="section-title">Recursive General Intelligence</h2>
             </div>
-        </section>
-        
-        <!-- Mystery Section -->
-        <section id="protocol" class="py-24 sm:py-32 px-6">
-            <div class="max-w-6xl mx-auto">
-                
-                <!-- Section header -->
-                <div class="text-center mb-16 reveal">
-                    <span class="font-mono text-xs text-cyan tracking-[0.3em] uppercase">Protocol Stages</span>
-                    <h2 class="font-sans font-normal text-3xl sm:text-4xl mt-4 tracking-[-0.01em]">The Evolution Pipeline</h2>
-                </div>
-                
-                <!-- Three columns -->
-                <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-                    
-                    <!-- Column 1: Germination -->
-                    <div class="reveal protocol-card rounded-2xl p-8 transition-colors duration-500" style="transition-delay: 0.1s;">
-                        <div class="icon-bio w-16 h-16 rounded-full bg-obsidian border border-champagne/30 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
-                                <circle cx="20" cy="20" r="6" stroke="#d4af37" stroke-width="1.5" class="bio-circuit"/>
-                                <path d="M20 14V6M20 34V26M14 20H6M34 20H26" stroke="#00f5d4" stroke-width="1.5" stroke-linecap="round" class="bio-circuit" style="animation-delay: 0.3s"/>
-                                <circle cx="20" cy="6" r="2" fill="#00f5d4"/>
-                                <circle cx="20" cy="34" r="2" fill="#00f5d4"/>
-                                <circle cx="6" cy="20" r="2" fill="#00f5d4"/>
-                                <circle cx="34" cy="20" r="2" fill="#00f5d4"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-sans font-semibold text-xl text-champagne mb-3">Germination</h3>
-                        <p class="font-mono text-sm text-grey-cool leading-relaxed">
-                            Initializing proprietary agentic protocols.
-                        </p>
-                    </div>
-                    
-                    <!-- Column 2: Adaptation -->
-                    <div class="reveal protocol-card rounded-2xl p-8 transition-colors duration-500" style="transition-delay: 0.2s;">
-                        <div class="icon-bio w-16 h-16 rounded-full bg-obsidian border border-champagne/30 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
-                                <path d="M10 30C10 30 15 20 20 20C25 20 30 30 30 30" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" class="bio-circuit"/>
-                                <path d="M10 25C10 25 15 15 20 15C25 15 30 25 30 25" stroke="#00f5d4" stroke-width="1.5" stroke-linecap="round" class="bio-circuit" style="animation-delay: 0.2s"/>
-                                <path d="M10 20C10 20 15 10 20 10C25 10 30 20 30 20" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" class="bio-circuit" style="animation-delay: 0.4s"/>
-                                <circle cx="20" cy="10" r="2" fill="#00f5d4"/>
-                                <circle cx="20" cy="15" r="2" fill="#00f5d4"/>
-                                <circle cx="20" cy="20" r="2" fill="#00f5d4"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-sans font-semibold text-xl text-champagne mb-3">Adaptation</h3>
-                        <p class="font-mono text-sm text-grey-cool leading-relaxed">
-                            Self-correcting neural pathways designed for unstructured environments.
-                        </p>
-                    </div>
-                    
-                    <!-- Column 3: Scale -->
-                    <div class="reveal protocol-card rounded-2xl p-8 transition-colors duration-500" style="transition-delay: 0.3s;">
-                        <div class="icon-bio w-16 h-16 rounded-full bg-obsidian border border-champagne/30 flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
-                                <circle cx="20" cy="20" r="4" stroke="#00f5d4" stroke-width="1.5" class="bio-circuit"/>
-                                <circle cx="20" cy="20" r="10" stroke="#d4af37" stroke-width="1.5" class="bio-circuit" style="animation-delay: 0.2s"/>
-                                <circle cx="20" cy="20" r="16" stroke="#00f5d4" stroke-width="1" stroke-dasharray="4 4" class="bio-circuit" style="animation-delay: 0.4s"/>
-                                <path d="M20 4V8M20 32V36M4 20H8M32 20H36" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-sans font-semibold text-xl text-champagne mb-3">Scale</h3>
-                        <p class="font-mono text-sm text-grey-cool leading-relaxed">
-                            Infinite growth potential on a sterile substrate.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- CTA Section -->
-        <section id="access" class="py-24 sm:py-32 px-6">
-            <div class="max-w-2xl mx-auto text-center reveal">
-                
-                <!-- Decorative line -->
-                <div class="w-px h-16 bg-gradient-to-b from-transparent via-champagne/50 to-transparent mx-auto mb-12"></div>
-                
-                <h2 class="font-sans font-normal text-3xl sm:text-4xl mb-4 tracking-[-0.01em]">Request Access</h2>
-                <p class="font-mono text-sm text-grey-cool mb-10">Secure your position in the next generation.</p>
-                
-                <!-- Email capture form -->
-                <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" onsubmit="handleSubmit(event)">
-                    <input 
-                        type="email" 
-                        required
-                        placeholder="Enter access protocol..." 
-                        class="input-protocol flex-1 bg-matte border border-white/10 rounded-lg px-5 py-4 font-mono text-sm text-white placeholder-grey-warm focus:outline-none focus:border-cyan/50 transition-all duration-300"
-                    >
-                    <button 
-                        type="submit" 
-                        class="btn-glow bg-gradient-to-r from-cyan to-cyan-glow text-obsidian font-mono font-medium px-8 py-4 rounded-lg tracking-wide whitespace-nowrap uppercase text-sm"
-                    >
-                        Join the Waitlist
-                    </button>
-                </form>
-                
-                <!-- Limited spots text -->
-                <p class="font-mono text-xs text-grey-warm mt-6 tracking-wider">
-                    <span class="inline-block w-2 h-2 rounded-full bg-champagne mr-2 animate-pulse"></span>
-                    Limited spots for Alpha access.
+            <div class="mission-statement reveal reveal-delay-1">
+                <p>
+                    To engineer <strong>Recursive General Intelligence (RGI)</strong>—agents that 
+                    iteratively rewrite their own cognitive and control architectures to solve 
+                    challenges beyond human data distributions. Self-improving systems that 
+                    generate their own training data, optimize their own learning algorithms, 
+                    and evolve their own architectures—<em class="mission-highlight">the foundation for aligned superintelligence.</em>
                 </p>
             </div>
-        </section>
-        
-        <!-- Footer -->
-        <footer class="py-12 px-6 border-t border-white/5">
-            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-                
-                <div class="flex items-center gap-3">
-                    <img src="assets/images/superseed.jpeg" alt="SuperSeed Labs" class="h-8 w-8 rounded-full object-cover opacity-70">
-                    <span class="font-mono text-xs text-grey-warm">© 2025 SUPERSEED LABS</span>
+        </div>
+    </section>
+    
+    <!-- Master Plan Section -->
+    <section class="masterplan" id="masterplan">
+        <div class="container">
+            <div class="masterplan-header reveal">
+                <div class="section-label">The 3-Phase Master Plan</div>
+                <h2 class="section-title">Building the Flywheel</h2>
+                <p class="masterplan-subtitle">
+                    A systematic path from cognitive foundation to recursive superintelligence.
+                </p>
+            </div>
+            
+            <div class="phases">
+                <!-- Phase I -->
+                <div class="phase reveal">
+                    <div class="phase-meta">
+                        <div class="phase-number">I</div>
+                        <div class="phase-codename">The Mind</div>
+                        <div class="phase-name">The Cognitive Core</div>
+                    </div>
+                    <div class="phase-content">
+                        <h4>Objective</h4>
+                        <p>Solve "System 2" reasoning via infinite synthetic data. Current LLMs are fast, intuitive thinkers—prone to hallucination. We are building a Generalist Cognitive Core grounded in World Models and Monte Carlo Tree Search.</p>
+                        
+                        <h4>Technical Alpha</h4>
+                        <ul>
+                            <li><strong>Latent World Models:</strong> Predict the next state in compressed latent space. "Dream" millions of futures without pixel-level rendering costs.</li>
+                            <li><strong>Search-Guided Learning:</strong> MCTS with dense value functions for deep lookahead. Winning trajectories distilled back into policy (AlphaZero-style autocurriculum).</li>
+                            <li><strong>Data Generator:</strong> An agent that creates its own "Gold Standard" reasoning data—smashing the data bottleneck.</li>
+                        </ul>
+                        
+                        <div class="phase-output">
+                            <h4>Commercial Output</h4>
+                            <p>Reasoning-as-a-Service API outperforming GPT-5 class models on complex multi-step planning: coding, legal discovery, logistics.</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="font-mono text-xs text-grey-cool tracking-wider">
-                    <span class="text-grey-warm">Lomé</span>
-                    <span class="mx-3 text-champagne/50">•</span>
-                    <span class="text-grey-warm">Global</span>
-                    <span class="mx-3 text-champagne/50">•</span>
-                    <span class="text-cyan/70">Orbit</span>
+                <!-- Phase II -->
+                <div class="phase reveal reveal-delay-1">
+                    <div class="phase-meta">
+                        <div class="phase-number">II</div>
+                        <div class="phase-codename">The Body</div>
+                        <div class="phase-name">The Embodied Bridge</div>
+                    </div>
+                    <div class="phase-content">
+                        <h4>Objective</h4>
+                        <p>The Universal VLA Controller for Any Morphology. We download the Phase I Cognitive Core into physical reality. Robot control as a generative modeling problem.</p>
+                        
+                        <h4>Technical Alpha</h4>
+                        <ul>
+                            <li><strong>Flow Matching Policies:</strong> Continuous Flow Matching (SOTA successor to Diffusion Policies) for smooth, high-frequency control robust to noise.</li>
+                            <li><strong>Cross-Embodiment Training:</strong> Single Vision-Language-Action transformer trained on heterogeneous data (humanoids, drones, manipulators).</li>
+                            <li><strong>Zero-Shot Generalization:</strong> Perceive task → generate motion. Operate unseen robots in unstructured environments immediately.</li>
+                        </ul>
+                        
+                        <div class="phase-output">
+                            <h4>Commercial Output</h4>
+                            <p><strong>SuperSeed OS</strong>—a universal brain for the $500B industrial robotics market. The "Android of Embodied AI."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase III -->
+                <div class="phase reveal reveal-delay-2">
+                    <div class="phase-meta">
+                        <div class="phase-number">III</div>
+                        <div class="phase-codename">The Species</div>
+                        <div class="phase-name">Recursive Autopoiesis</div>
+                    </div>
+                    <div class="phase-content">
+                        <h4>Objective</h4>
+                        <p>Automated Architecture Search & The Singularity Flywheel. The agents stop being the product and become the researchers.</p>
+                        
+                        <h4>Technical Alpha</h4>
+                        <ul>
+                            <li><strong>Evolutionary Model Merging:</strong> Population of agents fork, train on sub-tasks, merge weights via ties-merging and geometric matching.</li>
+                            <li><strong>Architecture Search:</strong> Endless tournament creating novel layer configurations and objective functions beyond human intuition.</li>
+                            <li><strong>Stabilized RSI:</strong> Infrastructure for safe Recursive Self-Improvement. Models optimize their own future learning efficiency—exponential capability compounding.</li>
+                        </ul>
+                        
+                        <div class="phase-output">
+                            <h4>Commercial Output</h4>
+                            <p><strong>A Superintelligence Service.</strong> An oracle for grand challenges—fusion reactor stability, protein folding, planetary logistics.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </section>
     
-    <!-- Scripts -->
+    <!-- Research Section -->
+    <section class="research" id="research">
+        <div class="container">
+            <div class="research-header reveal">
+                <div class="section-label">Research Interests</div>
+                <h2 class="section-title">Frontier Capabilities</h2>
+            </div>
+            
+            <div class="research-grid">
+                <div class="research-card reveal">
+                    <div class="research-icon">🔄</div>
+                    <h3>Recursive Self-Improvement</h3>
+                    <p>Architecting autonomous recursive evolution—infrastructure where agents design their own successor architectures. Stabilizing post-training feedback loops where models fork, optimize, and merge weights, creating a flywheel of capability scaling that remains interpretable and steerable.</p>
+                </div>
+                
+                <div class="research-card reveal reveal-delay-1">
+                    <div class="research-icon">🎮</div>
+                    <h3>Self-Play & Generalist Agents</h3>
+                    <p>Developing a generalist cognitive core integrating large multimodal reasoning VLAs with predictive world models and long-term memory. MCTS guided by dense value functions for deep lookahead. Open-ended self-play RL creates an autocurriculum with unlimited experiential data for superhuman capabilities.</p>
+                </div>
+                
+                <div class="research-card reveal reveal-delay-2">
+                    <div class="research-icon">🤖</div>
+                    <h3>Embodied Foundation Models</h3>
+                    <p>Extending the cognitive core into physical reality. Cross-embodiment deployment across diverse morphologies—humanoids, drones, autonomous vehicles. Flow matching and efficient world models enable generalist robot policies treating control as joint generative video-action processes.</p>
+                </div>
+                
+                <div class="research-card reveal reveal-delay-3">
+                    <div class="research-icon">🧬</div>
+                    <h3>Open-Ended Optimization</h3>
+                    <p>Algorithms prioritizing novelty and diversity to discover behaviors outside training distributions. Beyond objective-based gradient descent—evolutionary dynamics for automated architecture search and curriculum generation. Drawing from natural evolution's power to create complex organisms from simple building blocks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="why-us-header reveal">
+                <div class="section-label">The Edge</div>
+                <h2 class="section-title">Why SuperSeed Labs</h2>
+            </div>
+            
+            <div class="why-us-grid">
+                <div class="why-card reveal">
+                    <div class="why-number">01</div>
+                    <h3>The Data Moat is Dead</h3>
+                    <p>The winner will be the lab that builds the Data Generator. Our Phase I engine creates higher-quality training data than any competitor can scrape from the web. Infinite synthetic supervision.</p>
+                </div>
+                
+                <div class="why-card reveal reveal-delay-1">
+                    <div class="why-number">02</div>
+                    <h3>Native Embodiment</h3>
+                    <p>While others build chatbots, we are building agents that can act. The real economic value of AGI is in moving atoms, not just bits. Flow Matching is the only scalable path.</p>
+                </div>
+                
+                <div class="why-card reveal reveal-delay-2">
+                    <div class="why-number">03</div>
+                    <h3>Recursive Economics</h3>
+                    <p>Our cost of intelligence drops exponentially as our models optimize their own training code. We are not building a model—we are building a self-improving organism.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta" id="access">
+        <div class="cta-content reveal">
+            <div class="cta-label">Build the Future</div>
+            <h2 class="cta-title">Join the Path to Superintelligence</h2>
+            <p class="cta-subtitle">
+                We have the architecture defined. Now we need the fuel to ignite the first recursive loop.
+            </p>
+            <form class="cta-form" onsubmit="handleSubmit(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary">Request Access</button>
+            </form>
+            <p class="cta-footnote">
+                <span class="pulse"></span>
+                Seed round open. Limited positions for early partners.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="assets/images/superseed.jpeg" alt="SuperSeed Labs">
+                <span>© 2025 SUPERSEED LABS. All rights reserved.</span>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:contact@superseedlabs.com">Contact</a>
+                <a href="#masterplan">Master Plan</a>
+                <a href="#research">Research</a>
+            </div>
+            <div class="footer-locations">
+                <span>Lomé</span>
+                <span>Global</span>
+                <span>Orbit</span>
+            </div>
+        </div>
+    </footer>
+    
     <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeToggleSlider = themeToggle.querySelector('.theme-toggle-slider');
-        const html = document.documentElement;
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
         
-        // Check for saved theme preference or default to 'dark'
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        html.setAttribute('data-theme', currentTheme);
-        
-        // Update toggle icon based on theme
-        function updateThemeIcon(theme) {
-            themeToggleSlider.textContent = theme === 'dark' ? '🌙' : '☀️';
-        }
-        
-        // Initialize icon
-        updateThemeIcon(currentTheme);
-        
-        // Toggle theme on button click
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
             
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-            
-            // Update particle color based on theme
-            initParticles();
-        });
-        
-        // Particle system
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        
-        let particles = [];
-        const particleCount = 80;
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        function createParticle() {
-            return {
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 2 + 0.5,
-                speedX: (Math.random() - 0.5) * 0.3,
-                speedY: (Math.random() - 0.5) * 0.3,
-                opacity: Math.random() * 0.4 + 0.1
-            };
-        }
-        
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(createParticle());
+            if (currentScroll > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
-        }
-        
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Get current theme
-            const isDark = html.getAttribute('data-theme') === 'dark';
-            const particleColor = isDark ? '160, 160, 160' : '74, 74, 74';
-            
-            particles.forEach(particle => {
-                particle.x += particle.speedX;
-                particle.y += particle.speedY;
-                
-                // Wrap around edges
-                if (particle.x < 0) particle.x = canvas.width;
-                if (particle.x > canvas.width) particle.x = 0;
-                if (particle.y < 0) particle.y = canvas.height;
-                if (particle.y > canvas.height) particle.y = 0;
-                
-                // Draw particle
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${particleColor}, ${particle.opacity})`;
-                ctx.fill();
-            });
-            
-            requestAnimationFrame(animateParticles);
-        }
-        
-        // Initialize
-        resizeCanvas();
-        initParticles();
-        animateParticles();
-        
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initParticles();
+            lastScroll = currentScroll;
         });
         
-        // Scroll reveal
-        function reveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(element => {
+        // Reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-                const revealTop = element.getBoundingClientRect().top;
-                const revealPoint = 150;
                 
-                if (revealTop < windowHeight - revealPoint) {
-                    element.classList.add('active');
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
                 }
             });
-        }
+        };
         
-        window.addEventListener('scroll', reveal);
-        reveal(); // Initial check
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
         
-        // Seed drag and interaction
-        const seed = document.getElementById('seed');
-        const seedWrapper = seed.parentElement;
-        let isDragging = false;
-        let startX, startY, currentX = 0, currentY = 0;
-        let animationTimeout = null; // Track pending timeout
-        const maxDrag = 250; // Maximum drag distance
-        
-        function startDrag(e) {
-            isDragging = true;
-            seed.classList.add('dragging');
-            seedWrapper.classList.add('dragging');
-            
-            // Bug fix: Clear any pending timeout from previous drag
-            if (animationTimeout) {
-                clearTimeout(animationTimeout);
-                animationTimeout = null;
-            }
-            
-            // Clear any active transition from previous drag
-            seed.style.transition = '';
-            
-            const point = e.touches ? e.touches[0] : e;
-            startX = point.clientX - currentX;
-            startY = point.clientY - currentY;
-        }
-        
-        function drag(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            
-            const point = e.touches ? e.touches[0] : e;
-            let newX = point.clientX - startX;
-            let newY = point.clientY - startY;
-            
-            // Constrain to max drag distance with elastic feel
-            const distance = Math.sqrt(newX * newX + newY * newY);
-            if (distance > maxDrag) {
-                const scale = maxDrag / distance;
-                newX *= scale;
-                newY *= scale;
-            }
-            
-            currentX = newX;
-            currentY = newY;
-            
-            seed.style.transform = `translate(${currentX}px, ${currentY}px)`;
-        }
-        
-        function endDrag() {
-            if (!isDragging) return;
-            isDragging = false;
-            seed.classList.remove('dragging');
-            seedWrapper.classList.remove('dragging');
-            
-            // Animate back to center with spring effect
-            seed.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            seed.style.transform = 'translate(0, 0)';
-            currentX = 0;
-            currentY = 0;
-            
-            // Trigger pulse on release
-            seed.classList.add('clicked');
-            
-            // Store timeout ID so it can be cancelled if needed
-            animationTimeout = setTimeout(() => {
-                seed.classList.remove('clicked');
-                seed.style.transition = '';
-                // Clear inline transform to allow float animation to resume
-                seed.style.transform = '';
-                animationTimeout = null;
-            }, 600);
-        }
-        
-        // Mouse events
-        seed.addEventListener('mousedown', startDrag);
-        window.addEventListener('mousemove', drag);
-        window.addEventListener('mouseup', endDrag);
-        
-        // Touch events
-        seed.addEventListener('touchstart', startDrag, { passive: false });
-        window.addEventListener('touchmove', drag, { passive: false });
-        window.addEventListener('touchend', endDrag);
-        
-        // Click (for quick taps)
-        seed.addEventListener('click', () => {
-            if (!isDragging) {
-                seed.classList.remove('clicked');
-                void seed.offsetWidth;
-                seed.classList.add('clicked');
-                setTimeout(() => seed.classList.remove('clicked'), 600);
-            }
-        });
-        
-        // Form submission handler
+        // Form submission
         function handleSubmit(e) {
             e.preventDefault();
-            const input = e.target.querySelector('input');
-            const button = e.target.querySelector('button');
+            const form = e.target;
+            const input = form.querySelector('input');
+            const button = form.querySelector('button');
+            
+            // Store original text
+            const originalText = button.textContent;
             
             // Visual feedback
-            button.textContent = 'Protocol Received';
-            button.classList.add('opacity-75');
+            button.textContent = 'Access Requested';
+            button.style.background = 'var(--gold)';
             input.value = '';
             
+            // Reset after delay
             setTimeout(() => {
-                button.textContent = 'Join the Waitlist';
-                button.classList.remove('opacity-75');
+                button.textContent = originalText;
+                button.style.background = '';
             }, 3000);
         }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Parallax effect for orbs
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.orb');
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+            
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                orb.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
+            });
+        });
     </script>
 </body>
 </html>
-
