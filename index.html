@@ -1431,7 +1431,7 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <img src="assets/images/superseed.jpeg" alt="SuperSeed Labs">
-                <span>© 2025 SUPERSEED LABS. All rights reserved.</span>
+                <span>© <span id="copyright-year">2025</span> SUPERSEED LABS. All rights reserved.</span>
             </div>
             <div class="footer-links">
                 <a href="mailto:contact@superseedlabs.com">Contact</a>
@@ -1447,6 +1447,17 @@
     </footer>
     
     <script>
+        // Update copyright year dynamically
+        const currentYear = new Date().getFullYear();
+        const copyrightYearEl = document.getElementById('copyright-year');
+        if (copyrightYearEl) {
+            if (currentYear > 2025) {
+                copyrightYearEl.textContent = `2025-${currentYear}`;
+            } else {
+                copyrightYearEl.textContent = '2025';
+            }
+        }
+        
         // Navigation scroll effect
         const nav = document.getElementById('nav');
         let lastScroll = 0;
