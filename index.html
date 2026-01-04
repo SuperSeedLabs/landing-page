@@ -260,6 +260,16 @@
             height: 280px;
             margin-bottom: 3rem;
             animation: float-seed 8s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .hero-seed:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero-seed:active {
+            transform: scale(0.98);
         }
         
         @keyframes float-seed {
@@ -274,6 +284,11 @@
             border-radius: 24px;
             position: relative;
             z-index: 2;
+            transition: filter 0.4s ease;
+        }
+        
+        .hero-seed:hover img {
+            filter: brightness(1.1);
         }
         
         .hero-seed::before {
@@ -284,6 +299,12 @@
             border-radius: 28px;
             z-index: 1;
             animation: rotate-border 10s linear infinite;
+            transition: inset 0.4s ease, filter 0.4s ease;
+        }
+        
+        .hero-seed:hover::before {
+            inset: -8px;
+            filter: brightness(1.2);
         }
         
         .hero-seed::after {
@@ -293,6 +314,12 @@
             background: radial-gradient(circle, var(--electric-dim) 0%, transparent 70%);
             z-index: 0;
             animation: pulse-glow 4s ease-in-out infinite;
+            transition: inset 0.4s ease, opacity 0.4s ease;
+        }
+        
+        .hero-seed:hover::after {
+            inset: -60px;
+            opacity: 1.5;
         }
         
         @keyframes rotate-border {
@@ -568,15 +595,15 @@
         }
         
         .section-title {
-            font-family: var(--font-angular);
-            font-weight: 600;
+            font-family: var(--font-display);
+            font-weight: 800;
             font-size: clamp(2rem, 5vw, 3.5rem);
             letter-spacing: -0.02em;
             color: var(--white);
         }
         
         .mission-statement {
-            max-width: 800px;
+            max-width: 950px;
             margin: 0 auto;
             text-align: center;
         }
@@ -615,7 +642,7 @@
             font-size: 1.2rem;
             color: var(--smoke);
             margin-top: 1rem;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -1101,41 +1128,316 @@
             .why-us-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .phases {
+                gap: 2.5rem;
+            }
         }
         
         @media (max-width: 768px) {
+            html {
+                font-size: 15px;
+            }
+            
             nav {
-                padding: 1rem 1.5rem;
+                padding: 1rem 1.25rem;
+            }
+            
+            .logo {
+                font-size: 0.95rem;
+            }
+            
+            .logo-icon {
+                width: 28px;
+                height: 28px;
             }
             
             .nav-links {
                 display: none;
             }
             
+            .nav-status {
+                display: none;
+            }
+            
             .container {
-                padding: 0 1.5rem;
+                padding: 0 1.25rem;
             }
             
             .hero {
-                padding: 6rem 1.5rem 3rem;
+                padding: 5rem 1.25rem 2rem;
+                min-height: auto;
+                padding-top: 6rem;
             }
             
             .hero-seed {
-                width: 200px;
-                height: 200px;
+                width: 160px;
+                height: 160px;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-seed::after {
+                inset: -20px;
+            }
+            
+            .hero-overline {
+                font-size: 0.65rem;
+                letter-spacing: 0.2em;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-title {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+                margin-bottom: 1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                padding: 0 1rem;
+            }
+            
+            .hero-cta .btn {
+                width: 100%;
+                text-align: center;
+                padding: 1rem 1.5rem;
+            }
+            
+            .scroll-indicator {
+                display: none;
             }
             
             .thesis, .mission, .masterplan, .research, .why-us, .cta {
-                padding: 5rem 1.5rem;
+                padding: 4rem 1.25rem;
+            }
+            
+            .thesis-text {
+                font-size: 1.25rem;
+                line-height: 1.6;
+            }
+            
+            .thesis-tagline {
+                font-size: 1.1rem;
+                margin-top: 2rem;
+            }
+            
+            .thesis-endgame {
+                font-size: 0.95rem;
+                margin-top: 1.5rem;
+            }
+            
+            .thesis-label {
+                font-size: 0.65rem;
+            }
+            
+            .section-label {
+                font-size: 0.65rem;
+            }
+            
+            .section-title {
+                font-size: clamp(1.75rem, 7vw, 2.5rem);
+            }
+            
+            .mission-statement p {
+                font-size: 1.05rem;
+                line-height: 1.7;
+            }
+            
+            .masterplan-header {
+                margin-bottom: 3rem;
+            }
+            
+            .masterplan-subtitle {
+                font-size: 1rem;
+            }
+            
+            .phase {
+                padding: 1.75rem;
+                gap: 1.5rem;
+            }
+            
+            .phase-number {
+                font-size: 3.5rem;
+            }
+            
+            .phase-codename {
+                font-size: 0.75rem;
+            }
+            
+            .phase-name {
+                font-size: 1.25rem;
+            }
+            
+            .phase-content p {
+                font-size: 0.9rem;
+            }
+            
+            .phase-content li {
+                font-size: 0.9rem;
+                padding-left: 1.25rem;
+            }
+            
+            .phase-content h4 {
+                font-size: 0.65rem;
+            }
+            
+            .phase-output {
+                padding: 0.875rem 1.25rem;
+            }
+            
+            .phase-output p {
+                font-size: 0.85rem;
+            }
+            
+            .research-header, .why-us-header {
+                margin-bottom: 2.5rem;
+            }
+            
+            .research-card {
+                padding: 1.75rem;
+            }
+            
+            .research-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+            
+            .research-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .research-card p {
+                font-size: 0.9rem;
+            }
+            
+            .why-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .why-number {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .why-card h3 {
+                font-size: 1rem;
+            }
+            
+            .why-card p {
+                font-size: 0.85rem;
+            }
+            
+            .cta-label {
+                font-size: 0.65rem;
+            }
+            
+            .cta-title {
+                font-size: clamp(1.75rem, 7vw, 2.5rem);
+            }
+            
+            .cta-subtitle {
+                font-size: 1rem;
+                padding: 0 0.5rem;
             }
             
             .cta-form {
                 flex-direction: column;
+                padding: 0 0.5rem;
+            }
+            
+            .cta-form input {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+            
+            .cta-form .btn {
+                padding: 1rem;
+                width: 100%;
+            }
+            
+            .cta-footnote {
+                font-size: 0.7rem;
             }
             
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .footer-brand {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .footer-brand span {
+                font-size: 0.7rem;
+            }
+            
+            .footer-links {
+                gap: 1.5rem;
+            }
+            
+            .footer-links a {
+                font-size: 0.7rem;
+            }
+            
+            .footer-locations {
+                font-size: 0.65rem;
+            }
+            
+            /* Reduce orb sizes on mobile */
+            .orb-1 {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .orb-2 {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .orb-3 {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 380px) {
+            html {
+                font-size: 14px;
+            }
+            
+            .hero {
+                padding: 5rem 1rem 2rem;
+            }
+            
+            .hero-seed {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .thesis, .mission, .masterplan, .research, .why-us, .cta {
+                padding: 3rem 1rem;
+            }
+            
+            .phase {
+                padding: 1.5rem;
+            }
+            
+            .research-card, .why-card {
+                padding: 1.5rem;
             }
         }
         
@@ -1145,11 +1447,11 @@
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
-            padding: 5px;
+            padding: 8px;
         }
         
         .mobile-menu-btn span {
-            width: 24px;
+            width: 22px;
             height: 2px;
             background: var(--ivory);
             transition: all 0.3s ease;
@@ -1283,7 +1585,7 @@
                         
                         <div class="phase-output">
                             <h4>Commercial Output</h4>
-                            <p>Reasoning-as-a-Service API outperforming GPT-5 class models on complex multi-step planning: coding, legal discovery, logistics.</p>
+                            <p>Reasoning-as-a-Service API outperforming Gemini 3 Pro class models on complex multi-step planning: coding, legal discovery, logistics.</p>
                         </div>
                     </div>
                 </div>
@@ -1308,7 +1610,7 @@
                         
                         <div class="phase-output">
                             <h4>Commercial Output</h4>
-                            <p><strong>SuperSeed OS</strong>—a universal brain for the $500B industrial robotics market. The "Android of Embodied AI."</p>
+                            <p><strong>SUPERSEED OS</strong>—a universal brain for the $500B industrial robotics market. The "Android of Embodied AI."</p>
                         </div>
                     </div>
                 </div>
@@ -1382,7 +1684,7 @@
         <div class="container">
             <div class="why-us-header reveal">
                 <div class="section-label">The Edge</div>
-                <h2 class="section-title">Why SuperSeed Labs</h2>
+                <h2 class="section-title">Why SUPERSEED<span style="color: var(--gold);"> LABS</span></h2>
             </div>
             
             <div class="why-us-grid">
@@ -1411,7 +1713,7 @@
     <section class="cta" id="access">
         <div class="cta-content reveal">
             <div class="cta-label">Build the Future</div>
-            <h2 class="cta-title">Join the Path to Superintelligence</h2>
+            <h2 class="cta-title">Fuel the Flywheel</h2>
             <p class="cta-subtitle">
                 We have the architecture defined. Now we need the fuel to ignite the first recursive loop.
             </p>
@@ -1430,7 +1732,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="assets/images/superseed.jpeg" alt="SuperSeed Labs">
+                <img src="assets/images/superseed.jpeg" alt="SUPERSEED LABS">
                 <span>© <span id="copyright-year">2025</span> SUPERSEED LABS. All rights reserved.</span>
             </div>
             <div class="footer-links">
