@@ -1,0 +1,367 @@
+/* ============================================
+   SUPERSEED LABS - Mobile Styles
+   Responsive overrides for smaller viewports
+   ============================================ */
+
+/* ============================================
+   Tablet Breakpoint (max-width: 1024px)
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .phase {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .why-us-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .phases {
+        gap: 2.5rem;
+    }
+}
+
+/* ============================================
+   Mobile Breakpoint (max-width: 768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Base adjustments */
+    html {
+        font-size: 15px;
+        scroll-padding-top: 80px;
+    }
+    
+    /* Navigation */
+    nav {
+        padding: 1rem 1.25rem;
+    }
+    
+    .logo {
+        font-size: 0.95rem;
+    }
+    
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-status {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    /* Container */
+    .container {
+        padding: 0 1.25rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 0 1rem 6rem;
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding-top: 10rem;
+        justify-content: flex-start;
+    }
+    
+    .hero-seed {
+        width: 154px;
+        height: 154px;
+        margin-top: 0;
+        margin-bottom: 8rem;
+    }
+    
+    .hero-seed::after {
+        inset: -25px;
+    }
+    
+    .hero-overline {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 0.75rem;
+    }
+    
+    .hero-title {
+        font-size: clamp(2.75rem, 13vw, 4.5rem);
+        margin-bottom: 1rem;
+        line-height: 1;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.75rem;
+        padding: 0;
+        max-width: 92%;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        max-width: 300px;
+        padding: 0;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.875rem 1.25rem;
+        font-size: 0.7rem;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
+    
+    /* Section Padding */
+    .thesis, .mission, .masterplan, .research, .why-us, .cta {
+        padding: 4rem 1.25rem;
+    }
+    
+    /* Thesis Section */
+    .thesis-text {
+        font-size: 1.25rem;
+        line-height: 1.6;
+    }
+    
+    .thesis-tagline {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+    }
+    
+    .thesis-endgame {
+        font-size: 0.95rem;
+        margin-top: 1.5rem;
+    }
+    
+    .thesis-label {
+        font-size: 0.65rem;
+    }
+    
+    /* Section Labels */
+    .section-label {
+        font-size: 0.65rem;
+    }
+    
+    .section-title {
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+    }
+    
+    /* Mission Section */
+    .mission-statement p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+    
+    /* Master Plan Section */
+    .masterplan-header {
+        margin-bottom: 3rem;
+    }
+    
+    .masterplan-subtitle {
+        font-size: 1rem;
+    }
+    
+    .phase {
+        padding: 1.75rem;
+        gap: 1.5rem;
+    }
+    
+    .phase-number {
+        font-size: 3.5rem;
+    }
+    
+    .phase-codename {
+        font-size: 0.75rem;
+    }
+    
+    .phase-name {
+        font-size: 1.25rem;
+    }
+    
+    .phase-content p {
+        font-size: 0.9rem;
+    }
+    
+    .phase-content li {
+        font-size: 0.9rem;
+        padding-left: 1.25rem;
+    }
+    
+    .phase-content h4 {
+        font-size: 0.65rem;
+    }
+    
+    .phase-output {
+        padding: 0.875rem 1.25rem;
+    }
+    
+    .phase-output p {
+        font-size: 0.85rem;
+    }
+    
+    /* Research Section */
+    .research-header, .why-us-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .research-card {
+        padding: 1.75rem;
+    }
+    
+    .research-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .research-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .research-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Why Us Section */
+    .why-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .why-number {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .why-card h3 {
+        font-size: 1rem;
+    }
+    
+    .why-card p {
+        font-size: 0.85rem;
+    }
+    
+    /* CTA Section */
+    .cta-label {
+        font-size: 0.65rem;
+    }
+    
+    .cta-title {
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+    }
+    
+    .cta-subtitle {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .cta-form {
+        flex-direction: column;
+        padding: 0 0.5rem;
+    }
+    
+    .cta-form input {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .cta-form .btn {
+        padding: 1rem;
+        width: 100%;
+    }
+    
+    .cta-footnote {
+        font-size: 0.7rem;
+    }
+    
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .footer-brand {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .footer-brand span {
+        font-size: 0.7rem;
+    }
+    
+    .footer-links {
+        gap: 1.5rem;
+    }
+    
+    .footer-links a {
+        font-size: 0.7rem;
+    }
+    
+    .footer-locations {
+        font-size: 0.65rem;
+    }
+    
+    /* Reduce orb sizes */
+    .orb-1 {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .orb-2 {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .orb-3 {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* ============================================
+   Extra Small Devices (max-width: 380px)
+   ============================================ */
+
+@media (max-width: 380px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .hero {
+        padding: 5rem 1rem 2rem;
+    }
+    
+    .hero-seed {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .thesis, .mission, .masterplan, .research, .why-us, .cta {
+        padding: 3rem 1rem;
+    }
+    
+    .phase {
+        padding: 1.5rem;
+    }
+    
+    .research-card, .why-card {
+        padding: 1.5rem;
+    }
+}
+
