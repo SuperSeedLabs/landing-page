@@ -272,21 +272,33 @@
     
     .cta-form {
         flex-direction: column;
-        padding: 0 0.5rem;
-    }
-    
-    .cta-form input {
-        padding: 1rem;
-        font-size: 1rem;
+        padding: 0;
+        align-items: center;
     }
     
     .cta-form .btn {
-        padding: 1rem;
+        padding: 1rem 1.5rem;
         width: 100%;
+        max-width: 320px;
+        white-space: normal; /* Allow text to wrap if needed */
+        font-size: 0.75rem;
+        line-height: 1.4;
     }
     
     .cta-footnote {
         font-size: 0.7rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .footnote-row-1 {
+        justify-content: center;
+    }
+    
+    .cta-footnote .pulse {
+        width: 6px;
+        height: 6px;
     }
     
     /* Footer */
