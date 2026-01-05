@@ -267,11 +267,11 @@
         }
         
         .hero-seed:hover {
-            transform: scale(1.08);
+            transform: scale(1.0);
         }
         
         .hero-seed:active {
-            transform: scale(0.98);
+            transform: scale(0.95);
         }
         
         
@@ -294,7 +294,23 @@
             filter: brightness(1.1);
         }
         
-        /* Rotating border layer for smooth speed transitions */
+        /* Separate rotating inner layer */
+        .hero-seed .rotating-border {
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(135deg, var(--electric), var(--gold), var(--crimson));
+            border-radius: 28px;
+            z-index: 1;
+            animation: rotate-border 10s linear infinite;
+            transition: all 0.4s ease;
+        }
+        
+        /* On hover/interact, the border inverts colors aggressively */
+        .hero-seed.interacting .rotating-border {
+            inset: -8px;
+            filter: invert(1) hue-rotate(180deg) brightness(1.5);
+            box-shadow: 0 0 40px var(--electric);
+        }
         .hero-seed .rotating-border {
             position: absolute;
             inset: -4px;
@@ -1565,10 +1581,13 @@
     
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-seed" id="hero-seed">
-            <div class="rotating-border"></div>
-            <img src="assets/images/superseed.png" alt="SuperSeed">
+        <div class="hero-seed-container" id="hero-seed-container">
+            <div class="hero-seed" id="hero-seed">
+                <div class="rotating-border"></div>
+                <div class="pulse-ring"></div>
+                <img src="assets/images/superseed.png" alt="SuperSeed">
                 </div>
+            </div>
         <div class="hero-overline">Recursive General Intelligence</div>
         <h1 class="hero-title">
             <span class="line-1">Intelligence.</span><br>
@@ -1926,31 +1945,47 @@
             });
         }
         
-        // Hero seed interaction - smooth speed change
-        const heroSeed = document.getElementById('hero-seed');
-        const rotatingBorder = heroSeed?.querySelector('.rotating-border');
+        // Hero seed interaction - 3D Tilt & Pulse
+        const seedContainer = document.getElementById('hero-seed-container');
+        const seed = document.getElementById('hero-seed');
+        const pulseRing = seed?.querySelector('.pulse-ring');
         
-        if (heroSeed && rotatingBorder) {
-            const normalSpeed = 8;  // seconds
-            const fastSpeed = 0.6;  // seconds (very fast)
-            let isSpinningFast = false;
-            
-            // Desktop hover
-            heroSeed.addEventListener('mouseenter', () => {
-                rotatingBorder.style.setProperty('--spin-speed', fastSpeed + 's');
+        if (seedContainer && seed) {
+            // Desktop 3D Tilt
+            seedContainer.addEventListener('mousemove', (e) => {
+                const rect = seedContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Calculate rotation (max 15 degrees)
+                const rotateX = ((y - centerY) / centerY) * -15;
+                const rotateY = ((x - centerX) / centerX) * 15;
+
+                seed.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+                seed.classList.add('interacting');
+            });
+
+            seedContainer.addEventListener('mouseleave', () => {
+                seed.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+                seed.classList.remove('interacting');
             });
             
-            heroSeed.addEventListener('mouseleave', () => {
-                if (!isSpinningFast) {
-                    rotatingBorder.style.setProperty('--spin-speed', normalSpeed + 's');
+            // Mobile/Click Pulse
+            seed.addEventListener('click', (e) => {
+                // Prevent default tracking on touch if needed, but mainly trigger pulse
+                if (pulseRing) {
+                    pulseRing.classList.remove('active');
+                    void pulseRing.offsetWidth; // Trigger reflow
+                    pulseRing.classList.add('active');
                 }
-            });
-            
-            // Mobile tap toggle
-            heroSeed.addEventListener('click', () => {
-                isSpinningFast = !isSpinningFast;
-                heroSeed.classList.toggle('spinning', isSpinningFast);
-                rotatingBorder.style.setProperty('--spin-speed', isSpinningFast ? fastSpeed + 's' : normalSpeed + 's');
+                
+                // Add temporary interaction state
+                seed.classList.add('interacting');
+            setTimeout(() => {
+                    seed.classList.remove('interacting');
+                }, 600);
             });
         }
     </script>
