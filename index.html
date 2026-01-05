@@ -251,7 +251,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 8rem 2rem 4rem;
+            padding: 8rem 2rem 8rem;
             position: relative;
         }
         
@@ -259,7 +259,7 @@
             position: relative;
             width: 280px;
             height: 280px;
-            margin-bottom: 3rem;
+            margin-bottom: 8rem;
             animation: float-seed 8s ease-in-out infinite;
             cursor: pointer;
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -464,6 +464,7 @@
             gap: 0.75rem;
             opacity: 0;
             animation: fade-in 1s ease forwards 1.2s;
+            pointer-events: none;
         }
         
         .scroll-indicator span {
@@ -987,31 +988,13 @@
         
         .cta-form {
             display: flex;
-            gap: 1rem;
-            max-width: 500px;
+            justify-content: center;
             margin: 0 auto 2rem;
         }
         
-        .cta-form input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            background: var(--graphite);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--white);
-            outline: none;
-            transition: all 0.3s ease;
-        }
-        
-        .cta-form input::placeholder {
-            color: var(--ash);
-        }
-        
-        .cta-form input:focus {
-            border-color: var(--electric);
-            box-shadow: 0 0 0 3px var(--electric-dim);
+        .cta-form .btn {
+            width: 100%;
+            max-width: 300px;
         }
         
         .cta-footnote {
@@ -1169,7 +1152,7 @@
             }
             
             .hero {
-                padding: 0 1rem 3rem;
+                padding: 0 1rem 6rem;
                 min-height: 100vh;
                 min-height: 100dvh;
                 padding-top: 10rem;
@@ -1801,13 +1784,12 @@
             <p class="cta-subtitle">
                 We have the architecture defined. Now we need the fuel to ignite the first recursive loop.
             </p>
-            <form class="cta-form" onsubmit="handleSubmit(event)">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit" class="btn btn-primary">Request Access</button>
-                </form>
+            <div class="cta-form">
+                <a href="https://calendly.com/josiasmoukpe/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Initiate Founder Protocol</a>
+            </div>
             <p class="cta-footnote">
                 <span class="pulse"></span>
-                Seed round open. Limited positions for early partners.
+                Seed round open. Limited positions for strategic partners.
                 </p>
             </div>
         </section>
@@ -1877,27 +1859,6 @@
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
         
-        // Form submission
-        function handleSubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-            const input = form.querySelector('input');
-            const button = form.querySelector('button');
-            
-            // Store original text
-            const originalText = button.textContent;
-            
-            // Visual feedback
-            button.textContent = 'Access Requested';
-            button.style.background = 'var(--gold)';
-            input.value = '';
-            
-            // Reset after delay
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.style.background = '';
-            }, 3000);
-        }
         
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
