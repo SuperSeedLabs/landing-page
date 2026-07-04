@@ -56,6 +56,9 @@ component, edit its desktop rule and, if it needs to differ on small screens, it
   locks body scroll while open.
 - Hero σ: desktop 3D tilt (needs `perspective` on `#hero-seed-container`) and a click/tap
   pulse via `.pulse-ring`.
+- Nav σ mark hand-off: an IntersectionObserver on `#hero-seed` swaps the nav `<img>` between
+  the static and animated marks — static while the hero loop is on screen, animated once it
+  scrolls out of view (so only one σ animates at a time; skipped under reduced-motion).
 
 ## Design System (tokens in `css/core.css` `:root`)
 
@@ -78,7 +81,8 @@ viewBox (bowl circle r=22 @ (27,27); arm y=5 from x=27→64; stroke 10, round ca
 recursion — each generation supersedes the last.
 
 - `assets/images/sigma-mark.svg` — static mark (footer).
-- `assets/images/sigma-mark-animated.svg` — self-animating (nav `<img>`); has its own
+- `assets/images/sigma-mark-animated.svg` — self-animating standalone mark; `main.js` swaps
+  it into the nav `<img>` only while the hero σ is scrolled out of view. Has its own
   `@keyframes` + a `prefers-reduced-motion` guard so it falls back to the static trail.
 - Hero mark is an **inline** `<svg>` in `index.html` (so its keyframes reliably run).
 - Favicons: `favicon.svg` / `favicon-32.png` / `favicon-16.png` / `apple-touch-icon.png`.

@@ -164,3 +164,27 @@ if (seedContainer && seed) {
     });
 }
 
+// Nav σ mark: static while the hero σ loop is on screen, animated once it scrolls
+// out of view — the hero animation "hands off" to the nav mark so only one σ loops
+// at a time. Implemented by swapping the <img> between the static and animated SVGs.
+const navLogoMark = document.querySelector('.logo .logo-icon');
+const heroSeedForNav = document.getElementById('hero-seed');
+if (navLogoMark && heroSeedForNav && 'IntersectionObserver' in window && !prefersReducedMotion) {
+    const NAV_STATIC = 'assets/images/sigma-mark.svg';
+    const NAV_ANIMATED = 'assets/images/sigma-mark-animated.svg';
+    // Preload + decode the animated variant so the first swap is flicker-free.
+    new Image().src = NAV_ANIMATED;
+    let navIsAnimated = false;
+    const navMarkObserver = new IntersectionObserver((entries) => {
+        const heroVisible = entries[0].isIntersecting;
+        if (!heroVisible && !navIsAnimated) {
+            navLogoMark.src = NAV_ANIMATED;
+            navIsAnimated = true;
+        } else if (heroVisible && navIsAnimated) {
+            navLogoMark.src = NAV_STATIC;
+            navIsAnimated = false;
+        }
+    }, { threshold: 0 });
+    navMarkObserver.observe(heroSeedForNav);
+}
+
