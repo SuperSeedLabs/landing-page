@@ -1,84 +1,78 @@
 # SuperSeed Labs Landing Page
 
-A high-end, "Deep Tech" stealth-mode landing page for **SuperSeed Labs** (`superseedlabs.ai`).
+A high-end, deep-tech landing page for **SuperSeed Labs** (`superseedlabs.ai`) — a startup
+engineering **Recursive General Intelligence (RGI)**.
 
 ## Design Philosophy
 
-> "Apple design meets Alien Biology"
+> "Apple design meets alien biology."
 
-The page embodies a mysterious, expensive, and scientifically rigorous aesthetic—perfect for a cutting-edge AI/autonomous systems startup.
+A near-black canvas, a champagne-gold **σ (sigma) brand mark** whose five glyphs unwind and
+solidify (recursion — each generation supersedes the last), and bioluminescent-cyan accents.
 
 ## Features
 
-- **Animated Particle Background** — Subtle, drifting particles representing a sterile cleanroom or Mars atmosphere
-- **Bio-mechanical Seed Visualization** — Central floating asset with fiber-optic filament animation
-- **Scroll Reveal Animations** — Smooth, cinematic entrance effects for all sections
-- **Responsive Design** — Mobile-first approach using Tailwind CSS
-- **Dark Mode** — Deep obsidian black aesthetic with champagne gold and bioluminescent cyan accents
+- **Animated σ hero** — an inline SVG of five sigmas fading in sequence, on a 3.2s loop
+- **Ambient background** — drifting gradient orbs + a fine grid, with subtle mouse parallax
+- **Scroll-reveal animations** — sections fade/rise into view
+- **Fully responsive** — desktop, tablet (≤1024px), and mobile (≤768px / ≤380px) with a
+  slide-in mobile menu
+- **Accessible motion** — honors the OS `prefers-reduced-motion` setting
 
 ## Sections
 
-1. **Hero** — "Intelligence. Superseded." headline with floating seed visualization
-2. **Mystery Section** — Three cryptic pillars: Germination, Adaptation, Scale
-3. **Call to Action** — Email capture with "Access Protocol" branding
-4. **Footer** — Minimalist with "Lomé • Global • Orbit" locations
+Hero · Thesis · Mission · Master Plan (3 phases) · Research (4 cards) · Why Us (3 cards) ·
+CTA (Calendly booking) · Footer (*Lomé • Global • Orbit*)
 
 ## Color Palette
 
 | Color | Hex | Usage |
 |-------|-----|-------|
-| Obsidian Black | `#0a0a0a` | Primary background |
-| Matte Dark Grey | `#1a1a1a` | Cards, secondary surfaces |
-| Champagne Gold | `#d4af37` | Primary accent, headlines |
-| Bioluminescent Cyan | `#00f5d4` | Interactive elements, highlights |
-| Cool Grey | `#a0a0a0` | Body text |
+| Void | `#050505` | Primary background |
+| Obsidian | `#0a0a0a` | Secondary surfaces |
+| Champagne Gold | `#c9a227` | Brand σ mark, highlights |
+| Electric Cyan | `#00e5cc` | Interactive elements, accents |
+| Crimson | `#ff3366` | Urgent indicators |
 
 ## Typography
 
-- **Headlines:** Space Grotesk (light weight, tight tracking for futuristic bio-tech feel)
-- **Technical/Mono:** JetBrains Mono (code-like precision for "Labs" aesthetic)
-
-The typography pairing balances **biological elegance** with **machine precision** — perfect for the "Apple meets Alien Biology" aesthetic.
+- **Syne** — display / wordmark
+- **Space Grotesk** — titles and taglines
+- **IBM Plex Mono** — technical labels and overlines
 
 ## Tech Stack
 
-- HTML5
-- Tailwind CSS (via CDN)
-- Vanilla JavaScript (particles, scroll reveal, form handling)
-- Google Fonts
+Pure static **HTML5 + CSS + vanilla JavaScript** — no build step, no framework, no Tailwind.
+CSS is split into `css/core.css`, `css/desktop.css`, and `css/mobile.css`; interactivity
+lives in `main.js`. Fonts via Google Fonts.
 
 ## Getting Started
 
-Simply open `index.html` in a browser. No build process required.
+No build process required.
 
 ```bash
-# Clone and open
 open index.html
+# or serve locally:
+python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 
 ## File Structure
 
 ```text
 landing-page/
-├── index.html              # Main landing page
-├── assets/
-│   └── images/
-│       └── superseed.jpeg   # Logo/brand asset
-└── README.md
+├── index.html            # Markup + inline animated hero σ SVG
+├── main.js               # Interactivity
+├── css/                  # core.css, desktop.css, mobile.css
+├── assets/images/        # σ marks, favicons, og-image.png
+├── CNAME                 # superseedlabs.ai
+└── .github/workflows/    # GitHub Pages deploy
 ```
 
-## Customization
+See [CLAUDE.md](CLAUDE.md) for architecture and contributor notes.
 
-### Adding a Backend for Email Collection
+## Deployment
 
-Replace the `handleSubmit` function in `index.html` with your preferred email service integration (e.g., Mailchimp, ConvertKit, custom API).
-
-### Replacing the 3D Seed Asset
-
-The current seed visualization is CSS-based. To add a real 3D asset:
-
-1. Use Three.js or Spline for the 3D model
-2. Replace the `.seed-container` contents with your 3D embed
+Auto-deploys to **GitHub Pages** on every push to `main` via `.github/workflows/static.yml`.
 
 ---
 

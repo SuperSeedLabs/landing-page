@@ -78,10 +78,9 @@
     }
     
     .hero-seed {
-        width: 154px;
-        height: 154px;
+        /* Width/height are set inline on #hero-seed via min(504px, 86vw); only spacing here. */
         margin-top: 0;
-        margin-bottom: 8rem;
+        margin-bottom: 6rem;
     }
     
     .hero-seed::after {
@@ -358,12 +357,7 @@
     .hero {
         padding: 5rem 1rem 2rem;
     }
-    
-    .hero-seed {
-        width: 140px;
-        height: 140px;
-    }
-    
+
     .thesis, .mission, .masterplan, .research, .why-us, .cta {
         padding: 3rem 1rem;
     }

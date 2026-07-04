@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 54" width="152" height="108" role="img" aria-label="SuperSeed Labs sigma mark">
+  <style>
+    @keyframes sigfade{0%{opacity:0}14%{opacity:var(--o)}78%{opacity:var(--o)}100%{opacity:0}}
+    .a1{--o:0.10;animation:sigfade 3.2s 0s infinite}
+    .a2{--o:0.25;animation:sigfade 3.2s .14s infinite}
+    .a3{--o:0.42;animation:sigfade 3.2s .28s infinite}
+    .a4{--o:0.68;animation:sigfade 3.2s .42s infinite}
+    .a5g{--o:0.40;animation:sigfade 3.2s .56s infinite}
+    .a5{--o:1;animation:sigfade 3.2s .56s infinite}
+    @media (prefers-reduced-motion: reduce){.a1,.a2,.a3,.a4,.a5g,.a5{animation:none}}
+  </style>
+  <defs>
+    <g id="sg" fill="none" stroke-width="10">
+      <circle cx="27" cy="27" r="22"></circle>
+      <line x1="27" y1="5" x2="64" y2="5" stroke-linecap="round"></line>
+    </g>
+    <filter id="gb" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.6"></feGaussianBlur></filter>
+  </defs>
+  <use class="a1" href="#sg" stroke="#f5f5f5" opacity="0.1" transform="translate(4,33.76) scale(0.2266) rotate(-90,32,27)"></use>
+  <use class="a2" href="#sg" stroke="#f0e6cf" opacity="0.25" transform="translate(6.68,30) scale(0.2963) rotate(-72,32,27)"></use>
+  <use class="a3" href="#sg" stroke="#e8d5a0" opacity="0.42" transform="translate(11.12,26.24) scale(0.366) rotate(-54,32,27)"></use>
+  <use class="a4" href="#sg" stroke="#e0c26e" opacity="0.68" transform="translate(16.56,21.53) scale(0.4531) rotate(-36,32,27)"></use>
+  <use class="a5g" href="#sg" stroke="#c9a227" opacity="0.4" filter="url(#gb)" transform="translate(23.44,15.88) scale(0.5577) rotate(-18,32,27)"></use>
+  <use class="a5" href="#sg" stroke="#c9a227" transform="translate(23.44,15.88) scale(0.5577) rotate(-18,32,27)"></use>
+</svg>

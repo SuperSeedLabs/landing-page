@@ -4,144 +4,92 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a static landing page for SuperSeed Labs (`superseedlabs.ai`) - a Deep Tech AI startup focused on Recursive General Intelligence (RGI). The page features a high-end, stealth-mode aesthetic combining "Apple design meets Alien Biology."
+Static marketing landing page for **SuperSeed Labs** (`superseedlabs.ai`), a deep-tech AI
+startup focused on Recursive General Intelligence (RGI). Aesthetic: high-end, stealth-mode,
+"Apple design meets alien biology" — a near-black canvas with a champagne-gold σ (sigma)
+brand mark and bioluminescent-cyan accents.
 
 ## Tech Stack
 
-- **Pure Static HTML** - Single `index.html` file with embedded CSS and JavaScript
-- **No build process** - Direct browser rendering, no compilation or bundling
-- **Tailwind CSS** - Loaded via CDN (but most styling is custom CSS in `<style>` tags)
-- **Vanilla JavaScript** - No frameworks or libraries
-- **Fonts** - Google Fonts: Space Grotesk, Syne, IBM Plex Mono
+- **Pure static HTML/CSS/JS** — no build step, no bundler, no framework, no Tailwind.
+- **External assets** — CSS split across three files in `css/`; JS in `main.js`.
+- **Fonts** — Google Fonts: Syne (display), Space Grotesk (titles), IBM Plex Mono (labels).
+- Open `index.html` directly, or serve locally: `python3 -m http.server 8000`.
 
-## Development Commands
+## Deployment
 
-### Local Development
-```bash
-# Simply open index.html in a browser
-open index.html
+Auto-deploys to **GitHub Pages** via `.github/workflows/static.yml` on push to `main`
+(uploads the whole directory). Custom domain `superseedlabs.ai` is set by `CNAME`.
 
-# Or serve with a local server (optional)
-python -m http.server 8000
-# Then visit http://localhost:8000
-```
+## File Structure
 
-### Deployment
-The site auto-deploys to GitHub Pages via `.github/workflows/static.yml` on pushes to `main` branch.
-
-## Architecture
-
-### File Structure
-```
+```text
 landing-page/
-├── index.html              # Complete single-page application
-├── assets/
-│   └── images/
-│       ├── superseed.jpeg  # Logo (used in nav and footer)
-│       └── superseed.png   # Hero seed image
-├── .github/
-│   └── workflows/
-│       └── static.yml      # GitHub Pages deployment workflow
-├── CNAME                   # Custom domain configuration
-└── README.md               # Design philosophy and customization guide
+├── index.html            # Page markup + the inline animated hero σ SVG
+├── main.js               # All interactivity
+├── css/
+│   ├── core.css          # :root tokens, reset, keyframes, shared components, reduced-motion
+│   ├── desktop.css       # Default/desktop styles for every component
+│   └── mobile.css        # Responsive overrides (@media 1024 / 768 / 380px)
+├── assets/images/        # σ marks, favicon set, og-image.png (social card)
+├── .github/workflows/static.yml
+├── CNAME                 # superseedlabs.ai
+└── README.md
 ```
 
-### Code Organization in index.html
+### CSS architecture
 
-The entire application is contained in a single HTML file with three main sections:
+All three stylesheets load unconditionally in `<head>`, in order: `core` → `desktop` →
+`mobile`. `desktop.css` holds the base (unscoped) layout; `mobile.css` is **overrides only**,
+inside `max-width` media queries, and loads last so those overrides win. When changing a
+component, edit its desktop rule and, if it needs to differ on small screens, its mobile rule.
 
-1. **CSS (lines 25-1163)** - Embedded in `<style>` tag
-   - CSS custom properties define color palette and fonts (`:root`)
-   - Component-specific styles for nav, hero, thesis, mission, masterplan, research, why-us, cta, footer
-   - Animation keyframes for floating, pulsing, revealing effects
-   - Responsive breakpoints at 768px and 1024px
+### JavaScript (`main.js`)
 
-2. **HTML (lines 1165-1447)** - Page structure
-   - Background elements (grid, gradient orbs)
-   - Navigation with scroll effects
-   - Hero section with animated seed visualization
-   - Content sections: Thesis, Mission, Master Plan (3 phases), Research (4 cards), Why Us (3 cards), CTA
-   - Footer with dynamic copyright year
+- Dynamic copyright year (`#copyright-year`): shows `2025` or `2025-YYYY`.
+- Nav gains `.scrolled` (blur + border) past 50px.
+- Scroll reveal: `.reveal` elements gain `.active` when scrolled into view.
+- Smooth in-page anchor scrolling (respects `scroll-padding-top` for the fixed nav).
+- Orb parallax on mousemove — uses the independent `translate` property so it composes
+  with each orb's keyframe animation; **skipped under `prefers-reduced-motion`**.
+- Mobile menu: toggle + `aria-expanded`, closes on link click / outside click / Escape,
+  locks body scroll while open.
+- Hero σ: desktop 3D tilt (needs `perspective` on `#hero-seed-container`) and a click/tap
+  pulse via `.pulse-ring`.
 
-3. **JavaScript (lines 1449-1541)** - Embedded in `<script>` tag
-   - Dynamic copyright year calculation
-   - Navigation scroll effects (add `scrolled` class after 50px)
-   - Scroll reveal animations (Intersection Observer pattern)
-   - Email form handling (visual feedback only, no backend)
-   - Smooth anchor scrolling
-   - Parallax mouse effects for background orbs
+## Design System (tokens in `css/core.css` `:root`)
 
-### Key Interactive Features
+- Backgrounds: `--void #050505`, `--obsidian #0a0a0a`, `--carbon`, `--graphite`, `--steel`.
+- Accents: `--electric #00e5cc` (primary/interactive), `--gold #c9a227` (brand/σ),
+  `--crimson #ff3366` (urgent).
+- Fonts: `--font-display` Syne, `--font-angular` Space Grotesk, `--font-mono` IBM Plex Mono.
 
-- **Scroll Animations**: Elements with `.reveal` class fade in when scrolled into view
-- **Navigation State**: Nav bar gains backdrop blur and border when scrolled past 50px
-- **Floating Seed**: Hero image has continuous floating animation with rotating gradient border
-- **Form Submission**: Email form provides visual feedback but doesn't send data (placeholder for backend integration)
-- **Parallax Orbs**: Background gradient orbs follow mouse movement at different speeds
+## Sections (in `index.html`)
 
-### Design System
+Hero → Thesis → Mission → Master Plan (3 phases) → Research (4 cards) → Why Us (3 cards)
+→ CTA (`#access`) → Footer. Nav/mobile-menu/footer link to `#thesis`, `#masterplan`,
+`#research`, `#access`.
 
-**Color Variables** (in `:root`):
-- `--void`, `--obsidian`, `--carbon`, `--graphite` - Dark backgrounds
-- `--electric` (#00e5cc) - Primary accent, interactive elements
-- `--gold` (#c9a227) - Secondary accent, highlights
-- `--crimson` (#ff3366) - Urgent/special indicators
+## The σ brand mark
 
-**Typography Variables**:
-- `--font-display`: Syne - Headlines and body
-- `--font-angular`: Space Grotesk - Titles
-- `--font-mono`: IBM Plex Mono - Technical labels, code-like text
+Five overlapping lowercase sigmas that grow and solidify white → `#c9a227`, each glyph
+"unwinding" through rotations **−90 / −72 / −54 / −36 / −18** about (32,27) in a 76×54
+viewBox (bowl circle r=22 @ (27,27); arm y=5 from x=27→64; stroke 10, round caps). Concept:
+recursion — each generation supersedes the last.
 
-### Critical Implementation Details
+- `assets/images/sigma-mark.svg` — static mark (footer).
+- `assets/images/sigma-mark-animated.svg` — self-animating (nav `<img>`); has its own
+  `@keyframes` + a `prefers-reduced-motion` guard so it falls back to the static trail.
+- Hero mark is an **inline** `<svg>` in `index.html` (so its keyframes reliably run).
+- Favicons: `favicon.svg` / `favicon-32.png` / `favicon-16.png` / `apple-touch-icon.png`.
+- If you regenerate any mark, keep the −90/−72/−54/−36/−18 rotation progression consistent
+  across all copies (a prior handoff shipped several with −90/−18/−18/−36/−18 by mistake).
 
-1. **Dynamic Copyright Year** (lines 1450-1459)
-   - Shows "2025" if current year is 2025
-   - Shows "2025-YYYY" for years beyond 2025
-   - Updates on page load via JavaScript
+## Common tasks
 
-2. **Email Collection** (lines 1418-1421, 1494-1514)
-   - Form is a placeholder requiring backend integration
-   - Current `handleSubmit()` only provides visual feedback
-   - To integrate: Replace the function with API call to email service (Mailchimp, ConvertKit, etc.)
-
-3. **Asset Paths**
-   - Logo: `assets/images/superseed.jpeg` (used in nav and footer)
-   - Hero: `assets/images/superseed.png` (main hero image)
-   - Both must exist for proper rendering
-
-4. **Mobile Responsiveness**
-   - Mobile menu button exists in HTML but functionality not implemented
-   - Nav links hidden on mobile (<768px)
-   - Grid layouts collapse to single column on tablet (<1024px)
-
-## Common Modifications
-
-### Updating Content
-- All text content is directly in `index.html`
-- Sections are clearly marked with `<!-- Section Name -->`
-- To add/remove sections: Update HTML, ensure styles exist, add to nav links if needed
-
-### Styling Changes
-- Colors: Modify CSS custom properties in `:root`
-- Typography: Update font imports and `--font-*` variables
-- Animations: Keyframes defined at component level (search for `@keyframes`)
-
-### Adding Backend for Email
-Replace `handleSubmit()` function (line 1495) with actual API integration:
-```javascript
-function handleSubmit(e) {
-    e.preventDefault();
-    const email = e.target.querySelector('input').value;
-    // Add your API call here
-    fetch('/api/subscribe', {
-        method: 'POST',
-        body: JSON.stringify({ email })
-    });
-}
-```
-
-### Replacing 3D Seed Asset
-The current seed is a 2D image with CSS effects. To add real 3D:
-1. Add Three.js or Spline script
-2. Replace `.hero-seed` content (lines 1197-1199)
-3. Maintain animation container structure for consistency
+- **Copy/content**: edit `index.html` (sections marked with `<!-- ... -->`).
+- **Colors/fonts**: edit the `:root` tokens in `css/core.css`.
+- **CTA**: the "Fuel the Flywheel" CTA and footer "Partner" link point to a Calendly URL —
+  there is no email form or backend. Update the `href` to change the booking target.
+- **Social card**: `assets/images/og-image.png` (1200×630) is referenced by absolute URL in
+  the OG/Twitter meta tags. Regenerate it if the branding changes.

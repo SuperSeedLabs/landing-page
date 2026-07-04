@@ -57,15 +57,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Respect the user's OS "reduce motion" setting for pointer-driven motion.
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Parallax effect for orbs
+const parallaxOrbs = document.querySelectorAll('.orb');
 document.addEventListener('mousemove', (e) => {
-    const orbs = document.querySelectorAll('.orb');
+    if (prefersReducedMotion) return;
     const mouseX = e.clientX / window.innerWidth - 0.5;
     const mouseY = e.clientY / window.innerHeight - 0.5;
-    
-    orbs.forEach((orb, index) => {
+
+    parallaxOrbs.forEach((orb, index) => {
         const speed = (index + 1) * 20;
-        orb.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
+        // Use the independent `translate` property (not `transform`) so this parallax
+        // composes with each orb's keyframe `transform` animation (float/pulse) and with
+        // orb-3's translate(-50%,-50%) centering, instead of overwriting them.
+        orb.style.translate = `${mouseX * speed}px ${mouseY * speed}px`;
     });
 });
 
@@ -75,33 +82,37 @@ const mobileMenu = document.getElementById('mobile-menu');
 const mobileMenuLinks = mobileMenu?.querySelectorAll('a');
 
 if (mobileMenuBtn && mobileMenu) {
+    const closeMobileMenu = () => {
+        mobileMenuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    };
+
     mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        
+        const isOpen = mobileMenu.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active', isOpen);
+        mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         // Prevent body scroll when menu is open
-        if (mobileMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     });
-    
+
     // Close menu when clicking a link
     mobileMenuLinks?.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuBtn.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+        link.addEventListener('click', closeMobileMenu);
     });
-    
+
     // Close menu when clicking outside
     mobileMenu.addEventListener('click', (e) => {
         if (e.target === mobileMenu) {
-            mobileMenuBtn.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMobileMenu();
+        }
+    });
+
+    // Close menu on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            closeMobileMenu();
         }
     });
 }
@@ -114,6 +125,7 @@ const pulseRing = seed?.querySelector('.pulse-ring');
 if (seedContainer && seed) {
     // Desktop 3D Tilt
     seedContainer.addEventListener('mousemove', (e) => {
+        if (prefersReducedMotion) return;
         const rect = seedContainer.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -129,7 +141,9 @@ if (seedContainer && seed) {
     });
 
     seedContainer.addEventListener('mouseleave', () => {
-        seed.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+        // Clear the inline transform (rather than pinning an identity transform) so the
+        // ambient float-seed keyframe animation resumes instead of freezing after first hover.
+        seed.style.transform = '';
         seed.classList.remove('interacting');
     });
     

@@ -93,9 +93,9 @@ body::before {
     50% { transform: translateY(-20px) rotate(2deg); }
 }
 
-@keyframes rotate-border {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+@keyframes pulse-ring-expand {
+    0% { opacity: 0.7; transform: scale(0.55); }
+    100% { opacity: 0; transform: scale(1.5); }
 }
 
 @keyframes pulse-glow {
@@ -254,4 +254,22 @@ section {
     border-radius: 50%;
     animation: pulse-dot 2s ease-in-out infinite;
     flex-shrink: 0;
+}
+
+/* ============================================
+   Accessibility — Reduced Motion
+   Honor OS "reduce motion". Reveal/fade states still resolve to their
+   final (visible) values, so all content stays readable; the hero σ mark
+   falls back to its static trail (the per-glyph base opacities).
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
 }
